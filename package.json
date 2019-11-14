@@ -1,0 +1,32 @@
+{
+  "name": "onebusawaystop-electron",
+  "version": "1.0.0",
+  "description": "A Electron based application to present the stop information provided by the OneBusAway API for display on small devices (eg. Raspberry Pi)",
+  "main": "dist/js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KyleODore/OneBusAwayStop-Electron.git"
+  },
+  "keywords": [
+    "electron",
+    "OneBusAway"
+  ],
+  "author": "Kyle O'Dore",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/KyleODore/OneBusAwayStop-Electron/issues"
+  },
+  "homepage": "https://github.com/KyleODore/OneBusAwayStop-Electron#readme",
+  "devDependencies": {
+    "electron": "^7.1.1"
+  },
+  "dependencies": {
+    "electron-reload": "^1.5.0",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.2.1"
+  }
+}

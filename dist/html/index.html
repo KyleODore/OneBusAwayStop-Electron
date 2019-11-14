@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+  </head>
+  <body>
+    <div id="header">
+      <!-- Title for Page, add more stop info -->
+      <h2 id="stopInfo"></h2> 
+      <!-- Force Data Refresh Button -->
+      <input id="refreshBtn" type="button" value="Refresh Table" onclick="main();"/>
+    </div>
+    <!-- Table of Incoming Busses -->
+    <table id="busTable">
+      <thead>
+          <tr id="tableHeader">
+            <th>Bus Number</th>
+            <th># of Stops Away</th>
+            <th class="time">Arrival Time</th>
+            <th class="time">Time Till Arrival</th>
+          </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+  <script src="../js/main.js"></script>
+</html>
