@@ -16,20 +16,19 @@ const $ = jQuery = require('jquery');
 const stop = '26965'; // N 40th St & Wallingford Ave N (E bound)
 const apiKey = '509c2555-aa5e-4a34-ab64-18e3ec5a827b';
 const oneBusStopInfo = 'http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_'+ stop + '.xml?key=' + apiKey;
-const testResponse = 'http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_75403.xml?key=TEST';
+const testInfo = 'http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_75403.xml?key=TEST';
 var today;
 var time;
+var minuteView = true; // True: displays only minutes in time until arrival
 
 // pressing refresh button repeatedly creates multiple loops so it is disabled
 function main() {
-    console.log("REP"); //TODO: remove this once interval working
     getCurrTimeString();
     getStopInfo();
     $("#stopInfo").html("Stop Info for Stop (" + stop + ") " + time);
     setTimeout(() => {
-        console.log('Infinite Loop Test n:');
         main();
-    }, 500);
+    }, 1000);
 }
 
 main();
@@ -43,15 +42,24 @@ function convertToTimeString(specificTime) {
     return dateToString(new Date(specificTime));
 }
 
+// If date has hours and seconds
 function dateToString(inputDate) {
     return addTens(inputDate.getHours()) + ":" + addTens(inputDate.getMinutes()) + ":" + addTens(inputDate.getSeconds());
 }
 
+// Getting a difference between the input time and current time
 function getTimeDiffString(timeArrive) {
-    let timeInSec = Math.floor((timeArrive - today.getTime()) / 1000);
-    let timeInMin = Math.floor(timeInSec / 60);
-    let timeInHour = Math.floor(timeInMin / 60);
-    return addTens(timeInHour) + ":" + addTens(timeInMin) + ":" + addTens(timeInSec % 60);
+    if (timeArrive >= 0) {
+        let timeInSec = Math.floor((timeArrive - today.getTime()) / 1000);
+        let timeInMin = Math.floor(timeInSec / 60);
+        let timeInHour = Math.floor(timeInMin / 60);
+        if (minuteView) {
+            return timeInMin;
+        } else {
+            return addTens(timeInHour) + ":" + addTens(timeInMin) + ":" + addTens(timeInSec % 60);
+        }
+    }
+    return "0";
 }
 
 function addTens(count) {

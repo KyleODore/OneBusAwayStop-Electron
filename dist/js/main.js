@@ -1,12 +1,5 @@
 const { app, BrowserWindow } = require('electron');
 
-const stop = '26965'; // N 40th St & Wallingford Ave N (E bound)
-const apiKey = '509c2555-aa5e-4a34-ab64-18e3ec5a827b';
-const oneBusStopInfo = 'http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_'+ stop + '.xml?key=' + apiKey;
-const testResponse = 'http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_75403.xml?key=TEST';
-var today;
-var time;
-
 let win;
 
 function createWindow() {
