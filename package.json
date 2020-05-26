@@ -4,8 +4,10 @@
   "description": "A Electron based application to present the stop information provided by the OneBusAway API for display on small devices (eg. Raspberry Pi)",
   "main": "dist/js/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -22,11 +24,27 @@
   },
   "homepage": "https://github.com/KyleODore/OneBusAwayStop-Electron#readme",
   "devDependencies": {
-    "electron": "^7.1.1"
+    "electron": "^7.1.1",
+    "electron-builder": "^21.2.0",
+    "jquery": "^3.4.1"
   },
   "dependencies": {
-    "electron-reload": "^1.5.0",
-    "jquery": "^3.4.1",
-    "jsdom": "^15.2.1"
+    "electron-reload": "^1.5.0"
+  },
+  "build": {
+    "appId": "com.kyleodore.DurnBusAway",
+    "productName": "Durn Bus Away",
+    "extends": null,
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Productivity"
+    }
   }
 }

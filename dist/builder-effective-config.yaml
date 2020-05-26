@@ -1,0 +1,16 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.kyleodore.DurnBusAway
+productName: Durn Bus Away
+extends: null
+files:
+  - filter:
+      - build/**/*
+      - node_modules/**/*
+linux:
+  target:
+    - AppImage
+    - deb
+  category: Productivity
+electronVersion: 7.1.3
